@@ -1031,11 +1031,12 @@ namespace GsmComm.GsmCommunication
 		/// <returns>A <see cref="T:GsmComm.GsmCommunication.MessageStorageInfo" /> object that contains details about the supported storages.</returns>
 		public MessageStorageInfo GetMessageStorages()
 		{
-            MessageStorageInfo messageStorageInfo = new MessageStorageInfo { };
+            //MessageStorageInfo messageStorageInfo = new MessageStorageInfo { };
+            List<string[]> arrayLists = null;
 			lock (this)
 			{
 				this.VerifyValidConnection();
-				ArrayList arrayLists = new ArrayList();
+				arrayLists = new List<string[]>();
 				this.LogIt(LogLevel.Info, "Enumerating supported message storages...");
 				string str = this.ExecAndReceiveMultiple("AT+CPMS=?");
 				int num = str.IndexOf("+CPMS: ");
@@ -1059,7 +1060,8 @@ namespace GsmComm.GsmCommunication
 					arrayLists.Add(value);
 				}
 			}
-			return messageStorageInfo;
+
+            return new MessageStorageInfo { ReadStorages = arrayLists[0], WriteStorages = arrayLists[1], ReceiveStorages = arrayLists[2] };
 		}
 
 		/// <summary>
