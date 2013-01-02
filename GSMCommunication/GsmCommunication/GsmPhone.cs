@@ -1716,7 +1716,7 @@ namespace GsmComm.GsmCommunication
 		/// <param name="input">The data received.</param>
 		/// <returns>true if reception was successful, otherwise false.</returns>
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.Send(System.String)" />
-		public bool GsmComm.GsmCommunication.IProtocol.Receive(out string input)
+		public bool Receive(out string input)
 		{
 			input = string.Empty;
 			if (!this.IsCommThreadRunning())
@@ -1757,7 +1757,7 @@ namespace GsmComm.GsmCommunication
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.Receive(System.String@)" />
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.ExecAndReceiveAnything(System.String,System.String)" />
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.ReceiveMultiple" />
-		public string GsmComm.GsmCommunication.IProtocol.ReceiveAnything(string pattern)
+		public string ReceiveAnything(string pattern)
 		{
 			string str = null;
 			string empty = string.Empty;
@@ -1832,7 +1832,7 @@ namespace GsmComm.GsmCommunication
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.Receive(System.String@)" />
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.ExecAndReceiveMultiple(System.String)" />
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.ReceiveAnything(System.String)" />
-		public string GsmComm.GsmCommunication.IProtocol.ReceiveMultiple()
+		public string ReceiveMultiple()
 		{
 			return this.ReceiveAnything(string.Empty);
 		}
@@ -1840,7 +1840,7 @@ namespace GsmComm.GsmCommunication
 		/// <summary>Sends raw string data.</summary>
 		/// <param name="output">The data to send.</param>
 		/// <seealso cref="M:GsmComm.GsmCommunication.IProtocol.Receive(System.String@)" />
-		public void GsmComm.GsmCommunication.IProtocol.Send(string output)
+		public void Send(string output)
 		{
 			if (!this.IsCommThreadRunning())
 			{
