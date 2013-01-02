@@ -144,7 +144,7 @@ namespace GsmComm.PduConverter
 				}
 				case 1:
 				{
-				Label0:
+                //Label0:
 					str = PduParts.Decode7BitText(userData);
 					break;
 				}
@@ -155,7 +155,9 @@ namespace GsmComm.PduConverter
 				}
 				default:
 				{
-					goto Label0;
+                    //goto Label0;
+                    str = PduParts.Decode7BitText(userData);
+                    break;
 				}
 			}
 			return str;

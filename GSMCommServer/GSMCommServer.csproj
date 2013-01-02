@@ -33,16 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.Remoting" />
-    <Reference Include="GSMCommShared">
-      <HintPath>.\GSMCommServerReferences\GSMCommShared.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="GSMCommunication">
-      <HintPath>.\GSMCommServerReferences\GSMCommunication.dll</HintPath>
-    </Reference>
-    <Reference Include="PDUConverter">
-      <HintPath>.\GSMCommServerReferences\PDUConverter.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -77,6 +68,20 @@
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GSMCommShared\GSMCommShared.csproj">
+      <Project>{71ea4054-a98a-46ba-84fa-81652db72b72}</Project>
+      <Name>GSMCommShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GSMCommunication\GSMCommunication.csproj">
+      <Project>{32b76f1e-b022-47c6-86ec-28639d348067}</Project>
+      <Name>GSMCommunication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PDUConverter\PDUConverter.csproj">
+      <Project>{5e657efe-0a30-466d-b025-ff177e23a727}</Project>
+      <Name>PDUConverter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -197,20 +197,32 @@ namespace GsmComm.Server
 			this.StopInternal();
 		}
 
-		/// <summary>
-		/// Finalizes the class.
-		/// </summary>
-		protected override void Finalize()
-		{
-			try
-			{
-				this.Dispose();
-			}
-			finally
-			{
-				this.Finalize();
-			}
-		}
+        ~SmsServer()
+        {
+            try
+            {
+                this.Dispose();
+            }
+            finally
+            {
+                //this.Finalize();
+            }
+        }
+
+        ///// <summary>
+        ///// Finalizes the class.
+        ///// </summary>
+        //protected override void Finalize()
+        //{
+        //    try
+        //    {
+        //        this.Dispose();
+        //    }
+        //    finally
+        //    {
+        //        this.Finalize();
+        //    }
+        //}
 
 		/// <summary>
 		/// Tells if the remoting server is currently running.

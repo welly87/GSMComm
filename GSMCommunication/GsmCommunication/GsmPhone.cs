@@ -668,7 +668,7 @@ namespace GsmComm.GsmCommunication
 				str[3] = delflag.ToString();
 				str[4] = "...";
 				this.LogIt(LogLevel.Info, string.Concat(str));
-				int num = delflag;
+                int num = (int)delflag;
 				string str1 = string.Concat("AT+CMGD=", index.ToString(), ",", num.ToString());
 				this.ExecAndReceiveMultiple(str1);
 			}
@@ -1031,7 +1031,7 @@ namespace GsmComm.GsmCommunication
 		/// <returns>A <see cref="T:GsmComm.GsmCommunication.MessageStorageInfo" /> object that contains details about the supported storages.</returns>
 		public MessageStorageInfo GetMessageStorages()
 		{
-			MessageStorageInfo messageStorageInfo;
+            MessageStorageInfo messageStorageInfo = new MessageStorageInfo { };
 			lock (this)
 			{
 				this.VerifyValidConnection();
@@ -1196,9 +1196,9 @@ namespace GsmComm.GsmCommunication
 		/// <param name="upperBound">Receives the upper bound of the phonebook</param>
 		/// <param name="nLength">Receives the maximum number length, 0 if unknown</param>
 		/// <param name="tLength">Receives the maximum text length, 0 if unknown</param>
-		public void GetPhonebookSize(out int lowerBound, out int upperBound, out int nLength, out int tLength)
+		unsafe public void GetPhonebookSize(out int lowerBound, out int upperBound, out int nLength, out int tLength)
 		{
-			int num;
+            //int num;
 			int num1;
 			lock (this)
 			{
@@ -1213,26 +1213,27 @@ namespace GsmComm.GsmCommunication
 				}
 				lowerBound = int.Parse(match.Groups[1].Value);
 				upperBound = int.Parse(match.Groups[2].Value);
-				int& numPointer = nLength;
+                //int* numPointer = &nLength;
 				if (match.Groups[3].Value != "")
 				{
-					num = int.Parse(match.Groups[3].Value);
+                    nLength = int.Parse(match.Groups[3].Value);
 				}
 				else
 				{
-					num = 0;
+                    nLength = 0;
 				}
-				*(numPointer) = num;
-				int& numPointer1 = tLength;
+                //*(numPointer) = num;
+
+                //int* numPointer1 = &tLength;
 				if (match.Groups[4].Value != "")
 				{
-					num1 = int.Parse(match.Groups[4].Value);
+                    tLength = int.Parse(match.Groups[4].Value);
 				}
 				else
 				{
-					num1 = 0;
+                    tLength = 0;
 				}
-				*(numPointer1) = num1;
+                //*(numPointer1) = num1;
 				string[] strArrays = new string[8];
 				strArrays[0] = "lowerBound=";
 				strArrays[1] = lowerBound.ToString();

@@ -124,7 +124,7 @@ namespace GsmComm.GsmCommunication
 		{
 			SerialPortFixer.Dcb flags = new SerialPortFixer.Dcb();
 			this.GetCommStateNative(ref flags);
-			flags.Flags = flags.Flags & -16385;
+			flags.Flags = (uint)(flags.Flags & -16385);
 			this.SetCommStateNative(ref flags);
 		}
 

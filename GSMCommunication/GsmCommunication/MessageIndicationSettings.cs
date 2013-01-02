@@ -135,7 +135,8 @@ namespace GsmComm.GsmCommunication
 		/// <param name="ds">Specifies how new SMS-STATUS-REPORT messages should be indicated.</param>
 		/// <param name="bfr">Specifies how the indication buffer should be handled when indications are activated, i.e.
 		/// when <see cref="P:GsmComm.GsmCommunication.MessageIndicationSettings.Mode" /> is set to any value except <see cref="F:GsmComm.GsmCommunication.MessageIndicationMode.DoNotForward" />.</param>
-		public MessageIndicationSettings(MessageIndicationMode mode, SmsDeliverIndicationStyle mt, CbmIndicationStyle bm, SmsStatusReportIndicationStyle ds, IndicationBufferSetting bfr) : this(mode, mt, bm, ds, bfr)
+        public MessageIndicationSettings(MessageIndicationMode mode, SmsDeliverIndicationStyle mt, CbmIndicationStyle bm, SmsStatusReportIndicationStyle ds, IndicationBufferSetting bfr)
+            : this((int)mode, (int)mt, (int)bm, (int)ds, (int)bfr)
 		{
 		}
 	}

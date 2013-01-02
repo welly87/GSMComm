@@ -410,7 +410,7 @@ namespace GsmComm.GsmCommunication
 		/// </remarks>
 		public void DeleteMessages(DeleteScope scope, string storage)
 		{
-			int num = scope;
+			int num = (int)scope;
 			DeleteFlag deleteFlag = (DeleteFlag)Enum.Parse(typeof(DeleteFlag), num.ToString());
 			string[] str = new string[5];
 			str[0] = "Deleting \"";

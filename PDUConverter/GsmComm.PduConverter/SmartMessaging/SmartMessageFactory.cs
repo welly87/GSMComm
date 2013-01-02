@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Drawing;
 using System.Text;
 
 /// <summary>
@@ -23,7 +24,7 @@ namespace GsmComm.PduConverter.SmartMessaging
 		static SmartMessageFactory()
 		{
 			SmartMessageFactory.refNumber = 1;
-			SmartMessageFactory.EmptyOperatorLogo = SmartMessageFactory.CreateOperatorLogo(new OtaBitmap(null), "000", "00");
+			SmartMessageFactory.EmptyOperatorLogo = SmartMessageFactory.CreateOperatorLogo(new OtaBitmap((Bitmap)null), "000", "00");
 		}
 
 		public SmartMessageFactory()

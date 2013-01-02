@@ -235,7 +235,7 @@ namespace GsmComm.PduConverter
 		/// <exception cref="T:System.ArgumentException">value is not an <see cref="T:GsmComm.PduConverter.SmsTimestamp" />.</exception>
 		public int CompareTo(object value)
 		{
-			if (value as SmsTimestamp == null)
+			if (!(value is SmsTimestamp))
 			{
 				if (value != null)
 				{

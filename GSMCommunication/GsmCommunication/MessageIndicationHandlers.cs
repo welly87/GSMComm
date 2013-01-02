@@ -166,7 +166,7 @@ namespace GsmComm.GsmCommunication
 			Match match = regex.Match(input);
 			if (match.Success)
 			{
-				match.Groups[1].Value;
+				//match.Groups[1].Value;
 				int num = int.Parse(match.Groups[2].Value);
 				string value = match.Groups[3].Value;
 				if (BcdWorker.CountBytes(value) <= 0)
