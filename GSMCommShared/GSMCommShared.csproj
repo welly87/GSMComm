@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{71ea4054-a98a-46ba-84fa-81652db72b72}</ProjectGuid>
+    <ProjectGuid>{71EA4054-A98A-46BA-84FA-81652DB72B72}</ProjectGuid>
     <SchemaVersion>2</SchemaVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -30,7 +30,6 @@
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
@@ -52,6 +51,11 @@
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PDUConverter">
+      <HintPath>C:\GSMComm\DotNet40\PDUConverter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

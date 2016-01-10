@@ -517,18 +517,24 @@ namespace GsmComm.GsmCommunication
 		/// </remarks>
 		public void EnableMessageNotifications()
 		{
+            
 			MessageIndicationSupport supportedIndications = this.theDevice.GetSupportedIndications();
-			MessageIndicationMode messageIndicationMode = MessageIndicationMode.BufferAndFlush;
-			if (!supportedIndications.SupportsMode(messageIndicationMode))
+            
+            MessageIndicationMode messageIndicationMode = MessageIndicationMode.BufferAndFlush;
+            
+            if (!supportedIndications.SupportsMode(messageIndicationMode))
 			{
+                
 				if (supportedIndications.SupportsMode(MessageIndicationMode.SkipWhenReserved))
 				{
+                    
 					messageIndicationMode = MessageIndicationMode.SkipWhenReserved;
 				}
 				else
 				{
 					if (supportedIndications.SupportsMode(MessageIndicationMode.ForwardAlways))
 					{
+                        
 						messageIndicationMode = MessageIndicationMode.ForwardAlways;
 					}
 					else
@@ -537,8 +543,10 @@ namespace GsmComm.GsmCommunication
 					}
 				}
 			}
+            
 			SmsDeliverIndicationStyle smsDeliverIndicationStyle = SmsDeliverIndicationStyle.RouteMemoryLocation;
-			if (supportedIndications.SupportsDeliverStyle(smsDeliverIndicationStyle))
+            
+            if (supportedIndications.SupportsDeliverStyle(smsDeliverIndicationStyle))
 			{
 				CbmIndicationStyle cbmIndicationStyle = CbmIndicationStyle.Disabled;
 				SmsStatusReportIndicationStyle smsStatusReportIndicationStyle = SmsStatusReportIndicationStyle.RouteMemoryLocation;
@@ -548,6 +556,7 @@ namespace GsmComm.GsmCommunication
 					smsStatusReportIndicationStyle = SmsStatusReportIndicationStyle.Disabled;
 				}
 				IndicationBufferSetting indicationBufferSetting = IndicationBufferSetting.Flush;
+                
 				if (!supportedIndications.SupportsBufferSetting(indicationBufferSetting))
 				{
 					if (supportedIndications.SupportsBufferSetting(IndicationBufferSetting.Clear))
@@ -559,6 +568,7 @@ namespace GsmComm.GsmCommunication
 						throw new CommException("The phone does not support any of the required buffer settings.");
 					}
 				}
+                
 				MessageIndicationSettings messageIndicationSetting = new MessageIndicationSettings(messageIndicationMode, smsDeliverIndicationStyle, cbmIndicationStyle, smsStatusReportIndicationStyle, indicationBufferSetting);
 				this.theDevice.SetMessageIndications(messageIndicationSetting);
 				return;
