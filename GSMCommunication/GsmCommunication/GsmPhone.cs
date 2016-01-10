@@ -25,7 +25,7 @@ namespace GsmComm.GsmCommunication
 
 		private const string mobileEquipmentErrorPattern = "\\r\\n\\+CME ERROR: (\\d+)\\r\\n";
 
-		private SerialPort port;
+		private EnhancedSerialPort port;
 
 		private string portName;
 
@@ -434,7 +434,7 @@ namespace GsmComm.GsmCommunication
 					}
 					else
 					{
-						if (this.CommThreadReceive())
+                        if (this.CommThreadReceive())
 						{
 							timer.Stop();
 							this.checkConnection.Reset();
@@ -2378,7 +2378,7 @@ namespace GsmComm.GsmCommunication
 		/// <seealso cref="M:GsmComm.GsmCommunication.GsmPhone.IsOpen" />
 		/// <seealso cref="M:GsmComm.GsmCommunication.GsmPhone.Close" />
 		/// </remarks>
-		/// <exception cref="T:System.InvalidOperationException">Connection to device already open.</exception>
+		/// <exception cref="T:Systestem.InvalidOperationException">Connection to device already open.</exception>
 		/// <exception cref="T:GsmComm.GsmCommunication.CommException">Unable to open the port.</exception>
 		public void Open()
 		{
@@ -2435,8 +2435,10 @@ namespace GsmComm.GsmCommunication
 			}
 			else
 			{
-				SerialPortFixer.Execute(portName);
-				this.port = new SerialPort();
+				//SerialPortFixer.Execute(portName);
+				//this.port = new SerialPort();
+                this.port = new EnhancedSerialPort();
+                
 			}
 			try
 			{
@@ -2533,10 +2535,11 @@ namespace GsmComm.GsmCommunication
 
 		private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
 		{
-			if (e.EventType == SerialData.Chars)
-			{
+			//if (e.EventType == SerialData.Chars)
+			//{
 				this.receiveNow.Set();
-			}
+            
+			//}
 		}
 
 		/// <summary>
@@ -2635,10 +2638,14 @@ namespace GsmComm.GsmCommunication
 		private bool ReceiveInternal(out string input)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
-			for (string i = this.port.ReadExisting(); i.Length > 0; i = this.port.ReadExisting())
+			/*for (string i = this.port.ReadExisting(); i.Length > 0; i = this.port.ReadExisting())
 			{
 				stringBuilder.Append(i);
-			}
+			}*/
+		    while (port.BytesToRead > 0)
+		    {
+		        stringBuilder.Append((char)port.ReadByte());
+		    }
 			input = stringBuilder.ToString();
 			return input.Length > 0;
 		}
@@ -2882,7 +2889,11 @@ namespace GsmComm.GsmCommunication
 			}
 			this.port.DiscardOutBuffer();
 			this.port.DiscardInBuffer();
-			this.port.Write(output);
+			//this.port.Write(output);
+
+		    byte[] bytes = Encoding.ASCII.GetBytes(output);
+
+            port.Write(bytes, 0, bytes.Length);
 		}
 
 		/// <summary>

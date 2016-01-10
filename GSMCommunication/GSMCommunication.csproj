@@ -32,10 +32,17 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PDUConverter, Version=1.21.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\GSMComm\DotNet40\PDUConverter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GsmCommunication\EnhancedSerialPort.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
@@ -245,10 +252,6 @@
     <ProjectReference Include="..\GSMCommShared\GSMCommShared.csproj">
       <Project>{71ea4054-a98a-46ba-84fa-81652db72b72}</Project>
       <Name>GSMCommShared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PDUConverter\PDUConverter.csproj">
-      <Project>{5e657efe-0a30-466d-b025-ff177e23a727}</Project>
-      <Name>PDUConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

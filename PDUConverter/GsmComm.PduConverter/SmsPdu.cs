@@ -209,9 +209,10 @@ namespace GsmComm.PduConverter
 				if (dataCodingScheme.Alphabet != 2)
 				{
 					this.Encode7BitText(value);
+                    Console.WriteLine("Using 7 bit!");
 					return;
 				}
-				else
+				else 
 				{
 					this.EncodeUcs2Text(value);
 					return;

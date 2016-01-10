@@ -135,7 +135,7 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the setting is supported, false otherwise.</returns>
 		public bool SupportsBufferSetting(IndicationBufferSetting setting)
 		{
-			return this.SupportsBufferSetting(setting);
+			return this.SupportsBufferSetting((int)setting);
 		}
 
 		/// <summary>
@@ -166,6 +166,7 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the style is supported, false otherwise.</returns>
 		public bool SupportsDeliverStyle(int style)
 		{
+            
 			ArrayList arrayLists = this.ParseArrayAsString(this.deliver);
 			return arrayLists.Contains(style);
 		}
@@ -177,7 +178,8 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the style is supported, false otherwise.</returns>
 		public bool SupportsDeliverStyle(SmsDeliverIndicationStyle style)
 		{
-			return this.SupportsDeliverStyle(style);
+            
+			return this.SupportsDeliverStyle((int)style);
 		}
 
 		/// <summary>
@@ -187,8 +189,8 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the mode is supported, false otherwise.</returns>
 		public bool SupportsMode(int mode)
 		{
-			ArrayList arrayLists = this.ParseArrayAsString(this.mode);
-			return arrayLists.Contains(mode);
+            ArrayList arrayLists = this.ParseArrayAsString(this.mode);
+            return arrayLists.Contains(mode);
 		}
 
 		/// <summary>
@@ -198,7 +200,7 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the mode is supported, false otherwise.</returns>
 		public bool SupportsMode(MessageIndicationMode mode)
 		{
-			return this.SupportsMode(mode);
+			return this.SupportsMode((int)mode);
 		}
 
 		/// <summary>
@@ -219,7 +221,7 @@ namespace GsmComm.GsmCommunication
 		/// <returns>true if the style is supported, false otherwise.</returns>
 		public bool SupportsStatusReportStyle(SmsStatusReportIndicationStyle style)
 		{
-			return this.SupportsStatusReportStyle(style);
+			return this.SupportsStatusReportStyle((int)style);
 		}
 	}
 }
